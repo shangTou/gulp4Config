@@ -1,0 +1,14 @@
+/* 测试编译 */
+div {
+	margin: 0 auto;
+	p {
+		padding: 10px;
+		color: #f00;
+		transform: translate(50px, 100px);
+		animation: loading .2s linear;
+	}
+}
+
+body {
+	background-color: #000;
+}
