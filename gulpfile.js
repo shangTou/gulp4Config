@@ -32,7 +32,9 @@ function compileJS() {
 // 添加浏览器前缀
 function autoprefixerFn() {
 	return src('./dist/css/*.css')
-					 .pipe(autoprefixer())
+					 .pipe(autoprefixer({
+					 	browers: require('./package.json').browserslist
+					 }))
 				   .pipe(dest('./dist/css'))
 }
 
@@ -115,12 +117,12 @@ function serverReload() {
 
 // 监听任务
 function watchFn() {
-	watch(['./src/scss/*.scss', './src/js/*.js', './src/*.html'], series(delFn, htmlFileinClude, compileJS, compileSass, autoprefixerFn, copyFile, serverReload));
+	watch(['./src/scss/*.scss', './src/js/*.js', './src/*.html', './images/*'], series(delFn, htmlFileinClude, compileJS, compileSass, minImage, copyFile, serverReload));
 }
 
 // 开发环境
 function defaultTask() {
-	return series(delFn, htmlFileinClude, compileJS, compileSass, autoprefixerFn, copyFile, devServer);
+	return series(delFn, htmlFileinClude, compileJS, compileSass, autoprefixerFn, minImage, copyFile, devServer);
 
 }
 
