@@ -26,11 +26,5 @@
     "gulp-uglify": "^3.0.2",
     "node-sass": "^4.12.0"
   },
-  "devDependencies": {},
-  "browserslist": [
-    "last 2 version",
-    "> 1%",
-    "maintained node versions",
-    "not dead"
-  ]
+  "devDependencies": {}
 }

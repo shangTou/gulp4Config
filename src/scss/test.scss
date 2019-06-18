@@ -12,3 +12,11 @@ div {
 body {
 	background-color: #000;
 }
+/* 避免被autoprefixer删除代码 */
+div {
+	-webkit-line-clamp: 3;
+	/* autoprefixer: off */
+	-webkit-box-orient: vertical;
+	/* autoprefixer: on */
+	overflow: hidden;
+}
