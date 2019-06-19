@@ -116,9 +116,9 @@ function serverReload() {
 // 压缩JS代码
 function uglifyFn() {
 	return src('./dist/js/main.js')
-					.pipe(uglify())
-					.pipe(rename({ suffix: '.min' }))
-					.pipe(dest('./dist/js'))
+		.pipe(uglify())
+		.pipe(rename({ suffix: '.min' }))
+		.pipe(dest('./dist/js'))
 }
 
 // 监听任务
@@ -129,7 +129,6 @@ function watchFn() {
 // 开发环境
 function defaultTask() {
 	return series(delFn, htmlFileinClude, compileJS, compileSass, autoprefixerFn, minImage, copyFile, devServer);
-
 }
 
 // 生产环境
