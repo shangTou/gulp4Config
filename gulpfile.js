@@ -128,14 +128,14 @@ function watchFn() {
 
 // 开发环境
 function defaultTask() {
+	setTimeout(() => {
+		watchFn();
+	}, 1500);
 	return series(delFn, htmlFileinClude, compileJS, compileSass, autoprefixerFn, minImage, copyFile, devServer);
 }
 
 // 生产环境
 function buildTask() {
-	setTimeout(() => {
-		watchFn();
-	}, 1500);
 	return series(delFn, htmlFileinClude, compileJS, compileSass, autoprefixerFn, cleanCssFn, uglifyFn, minImage, copyFile);
 }
 
