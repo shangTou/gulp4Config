@@ -115,9 +115,9 @@ function serverReload() {
 
 // 压缩JS代码
 function uglifyFn() {
-	return src('./dist/js/main.js')
+	return src('./dist/js/main.js', {allowEmpty: true})
 		.pipe(uglify())
-		.pipe(rename({ suffix: '.min' }))
+		.pipe(rename({suffix: '.min'}))
 		.pipe(dest('./dist/js'))
 }
 
