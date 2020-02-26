@@ -1,0 +1,16 @@
+@charset "UTF-8";
+/* 测试编译 */
+div {
+  margin: 0 auto; }
+  div p {
+    padding: 10px;
+    color: #f00;
+    transform: translate(50px, 100px);
+    animation: loading .2s linear; }
+
+/* 避免被autoprefixer删除代码 */
+div {
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  /*! autoprefixer:innore next */
+  -webkit-box-orient: vertical; }

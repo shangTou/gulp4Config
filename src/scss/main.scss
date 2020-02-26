@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding-top: 153px;
+  // 头部
+  .header {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-top: 61px;
+    div {
+      position: relative;
+      color: #000;
+      font-size: 34px;
+      color: #a1a1a1;
+      & + div {
+        margin-left: 14px;
+      }
+      &.actived {
+        color: #000;
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -12px;
+          height: 5px;
+          border-radius: 2.5px;
+          background-color: #ffde00;
+        }
+      }
+    }
+    img {
+      display: block;
+      position: absolute;
+      left: 30px;
+      top: 30px;
+      width: 177px;
+      height: 76px;
+      z-index: 2;
+    }
+  }
+  // poster
+  .poster {
+    padding: 0 30px 30px;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

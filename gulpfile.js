@@ -10,6 +10,7 @@ const rename = require('gulp-rename');
 const babel = require('gulp-babel');
 const del = require('del');
 const precompile = require('gulp-copy-content');
+const px2rem = require('gulp-px3rem');
 
 sass.compiler = require('node-sass')
 
@@ -17,7 +18,7 @@ sass.compiler = require('node-sass')
 function compileSass() {
 	return src('./src/scss/*.scss')
 		.pipe(sass().on('error', sass.logError))
-		.pipe(dest('./dist/css'))
+		.pipe(dest('./src/css'))
 }
 
 // 编译ES6
@@ -121,9 +122,18 @@ function uglifyFn() {
 		.pipe(dest('./dist/js'))
 }
 
+// px转换rem
+function px2remFn() {
+	return src('./src/css/*.css')
+		.pipe(px2rem({
+			remUnit: 750
+		}))
+		.pipe(dest('./dist/css'))
+}
+
 // 监听任务
 function watchFn() {
-	watch(['./src/scss/*.scss', './src/js/*.js', './src/*.html', './images/*'], series(delFn, htmlFileinClude, compileJS, compileSass, minImage, copyFile, serverReload));
+	watch(['./src/scss/*.scss', './src/js/*.js', './src/*.html', './images/*'], series(delFn, htmlFileinClude, compileJS, compileSass, px2remFn, autoprefixerFn, minImage, copyFile, serverReload));
 }
 
 // 开发环境
@@ -131,12 +141,12 @@ function defaultTask() {
 	setTimeout(() => {
 		watchFn();
 	}, 1500);
-	return series(delFn, htmlFileinClude, compileJS, compileSass, autoprefixerFn, minImage, copyFile, devServer);
+	return series(delFn, htmlFileinClude, compileJS, compileSass, px2remFn, autoprefixerFn, minImage, copyFile, devServer);
 }
 
 // 生产环境
 function buildTask() {
-	return series(delFn, htmlFileinClude, compileJS, compileSass, autoprefixerFn, cleanCssFn, uglifyFn, minImage, copyFile);
+	return series(delFn, htmlFileinClude, compileJS, compileSass, px2remFn, autoprefixerFn, cleanCssFn, uglifyFn, minImage, copyFile);
 }
 
 

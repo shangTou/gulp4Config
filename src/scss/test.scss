@@ -9,14 +9,12 @@ div {
 	}
 }
 
-body {
-	
-}
 /* 避免被autoprefixer删除代码 */
 div {
 	-webkit-line-clamp: 3;
-	/* autoprefixer: off */
-	-webkit-box-orient: vertical;
-	/* autoprefixer: on */
 	overflow: hidden;
+	/*! autoprefixer:innore next */
+	-webkit-box-orient: vertical;
 }
+
+
