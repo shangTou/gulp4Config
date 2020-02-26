@@ -3,5 +3,6 @@ let isCanUseBabel = false;
 let a = 0;
 
 window.onload = function() {
-  document.documentElement.style.fontSize = document.documentElement.clientWidth + 'px';
+  let windowWidth = document.documentElement.clientWidth;
+  document.documentElement.style.fontSize = (windowWidth > 750 ? 750 : windowWidth) + 'px';
 }
