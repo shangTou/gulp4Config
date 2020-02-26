@@ -15,10 +15,22 @@
 	-webkit-box-orient: vertical;
 ```
 
-## px2rem中1px边框不能显示，添加/*no*/防止转换
+## px2rem中1px边框不能显示，添加/\*no\*/防止转换
 ```
 .selector {
   border: 1px solid #fff;/*no*/
 }
 ```
-
+## 使用px2rem的方法
+```
+1、在gulefile.js的px2rem配置中设置remUnit为设计稿的宽度，默认为75
+px2rem({
+			remUnit: 750
+		})
+2、把html的字体大小设置成屏幕大小,下面是限制了页面的最大宽度
+window.onload = function() {
+  let windowWidth = document.documentElement.clientWidth;
+  document.documentElement.style.fontSize = (windowWidth > 750 ? 750 : windowWidth) + 'px';
+}
+3、设计稿是多少px，CSS就多少px
+```
