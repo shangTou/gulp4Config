@@ -15,7 +15,7 @@
 	-webkit-box-orient: vertical;
 ```
 
-## px2rem中1px边框不能显示，添加/\*no\*/防止转换
+## px2rem中1px边框不能显示，添加/\*no\*/表示忽略该语句,/\*px\*/表示不转换成rem
 ```
 .selector {
   border: 1px solid #fff;/*no*/
